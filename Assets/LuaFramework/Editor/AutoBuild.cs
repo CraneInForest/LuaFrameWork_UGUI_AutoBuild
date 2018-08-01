@@ -77,9 +77,6 @@ public class AutoBuild
 
     static void makePackage(bool isRun)
     {
-        EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
-        EditorUserBuildSettings.exportAsGoogleAndroidProject = true;
-
         string[] levels = { "Assets/LuaFramework/Scenes/main.unity"};
         BuildPlayerOptions option = new BuildPlayerOptions();
         option.scenes = levels;
