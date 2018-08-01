@@ -30,6 +30,18 @@ public class Packager {
         return AssetDatabase.LoadMainAssetAtPath("Assets/LuaFramework/Examples/Builds/" + file);
     }
 
+    [MenuItem("LuaFramework/Build Resource", false, 100)]
+    public static void BuildResource()
+    {
+#if UNITY_ANDROID
+        BuildAndroidResource();
+#elif UNITY_IPHONE
+        BuildiPhoneResource();
+#else
+        BuildWindowsResource();
+#endif
+    }
+
     [MenuItem("LuaFramework/Build iPhone Resource", false, 100)]
     public static void BuildiPhoneResource() {
         BuildTarget target;
