@@ -7,6 +7,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -37,6 +38,14 @@ public class AutoBuild
     [UnityEditor.Callbacks.DidReloadScripts]
     public static void OnScriptsReloaded()
     {
+        if (File.Exists(Application.dataPath + "/clear.ini"))
+        {
+            File.Delete(Application.dataPath + "/clear.ini");
+            PlayerPrefs.SetInt("clearAndBuild", 0);
+            PlayerPrefs.SetInt("autobuild", 0);
+            PlayerPrefs.SetInt("exportPackage", 0);
+        }
+
         if (PlayerPrefs.GetInt("clearAndBuild") == 1)
         {
             PlayerPrefs.SetInt("clearAndBuild", 0);
